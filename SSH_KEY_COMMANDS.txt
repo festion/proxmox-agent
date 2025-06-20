@@ -1,0 +1,22 @@
+# CORRECTED SSH KEY SETUP COMMANDS
+# These commands fix the line break syntax error
+
+## Option 1: Single command (copy/paste this entire line):
+echo 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8A97tj/fHwDnHskLNNdJKF+yyzrkq7PwfHK8uXFcyF1S04Gcue0kCOJrrOnip/GecDQJ4aoyIvw/16a0fDGuq7mosyP3dGL8DRSixXIUsujzAycEv785UsqIx4BKFnBtjAw== jeremy.ames@outlook.com' >> ~/.ssh/authorized_keys
+
+## Option 2: Using heredoc (multi-line safe):
+cat >> ~/.ssh/authorized_keys << 'EOF'
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8A97tj/fHwDnHskLNNdJKF+yyzrkq7PwfHK8uXFcyF1S04Gcue0kCOJrrOnip/GecDQJ4aoyIvw/16a0fDGuq7mosyP3dGL8DRSixXIUsujzAycEv785UsqIx4BKFnBtjAw== jeremy.ames@outlook.com
+EOF
+
+## Option 3: Run the setup script:
+# Transfer this file to Proxmox and run:
+# scp ssh_key_setup_fix.sh root@192.168.1.137:/tmp/
+# ssh root@192.168.1.137 "bash /tmp/ssh_key_setup_fix.sh"
+
+## After adding the key, set permissions:
+chmod 600 ~/.ssh/authorized_keys
+chmod 700 ~/.ssh/
+
+## Verify installation:
+tail -1 ~/.ssh/authorized_keys

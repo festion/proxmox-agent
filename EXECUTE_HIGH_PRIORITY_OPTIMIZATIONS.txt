@@ -1,0 +1,33 @@
+
+# HIGH PRIORITY OPTIMIZATION EXECUTION INSTRUCTIONS
+# Generated: 2025-06-19 18:47:55
+
+## 🚨 CRITICAL - Execute these in order:
+
+### 1. BACKUP STORAGE CLEANUP (IMMEDIATE)
+scp backup_storage_cleanup.sh root@192.168.1.137:/tmp/
+ssh root@192.168.1.137 "chmod +x /tmp/backup_storage_cleanup.sh && /tmp/backup_storage_cleanup.sh"
+
+### 2. SNAPSHOT LIFECYCLE MANAGEMENT
+scp snapshot_lifecycle_management.sh root@192.168.1.137:/tmp/
+ssh root@192.168.1.137 "chmod +x /tmp/snapshot_lifecycle_management.sh && /tmp/snapshot_lifecycle_management.sh"
+
+### 3. SECURITY UPDATES AUTOMATION
+scp security_updates_setup.sh root@192.168.1.137:/tmp/
+ssh root@192.168.1.137 "chmod +x /tmp/security_updates_setup.sh && /tmp/security_updates_setup.sh"
+
+### 4. STORAGE MONITORING & ALERTING
+scp storage_monitoring_setup.sh root@192.168.1.137:/tmp/
+ssh root@192.168.1.137 "chmod +x /tmp/storage_monitoring_setup.sh && /tmp/storage_monitoring_setup.sh"
+
+## 📊 Verification Commands:
+ssh root@192.168.1.137 "df -h"                                    # Check storage
+ssh root@192.168.1.137 "systemctl status unattended-upgrades"     # Check auto-updates
+ssh root@192.168.1.137 "crontab -l"                              # Check scheduled tasks
+ssh root@192.168.1.137 "/usr/local/bin/storage-status.sh"        # Storage report
+
+## 🎯 Expected Results:
+- Backup storage: <80% utilization
+- Automated snapshot cleanup: Configured
+- Security updates: Enabled with safe exclusions  
+- Storage monitoring: Active with 6-hour checks
